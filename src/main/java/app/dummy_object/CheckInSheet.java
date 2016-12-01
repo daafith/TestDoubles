@@ -26,7 +26,6 @@ public class CheckInSheet {
     return products;
   }
   
-  
   @Override
   /**
    * This will result in a runtime exception if used with the dummy customer.<b>
