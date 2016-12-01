@@ -5,13 +5,14 @@ import java.util.List;
 
 /**
  * Imagine a pawn shop that needs to keep track of what the customer sells to the shop.<br>
- * I leave the customer untouched, because I want the example not to be obscured by details.
  */
 public class CheckInSheet {
 
-  private List<Product> products;
+  private final List<Product> products;
+  private final ICustomer customer;
   
   public CheckInSheet(ICustomer customer) {
+    this.customer = customer;
     products = new ArrayList<>();
   }
 
@@ -24,4 +25,19 @@ public class CheckInSheet {
   public List<Product> getLineItems() {
     return products;
   }
+  
+  
+  @Override
+  /**
+   * This will result in a runtime exception if used with the dummy customer.<b>
+   */
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (Product product  : products) {
+        sb.append(product.productName);
+        sb.append("\t");
+    }
+    return String.format("%s checked in the following product(s) %s", customer.getFullName(), sb.toString());
+  }
+  
 }

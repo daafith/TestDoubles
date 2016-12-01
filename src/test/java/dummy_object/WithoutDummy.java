@@ -32,7 +32,6 @@ public class WithoutDummy {
     List<Product> lineItems = checkInSheet.getLineItems();
     assertEquals("number of items on the check in sheet", QUANTITY, lineItems.size());
     assertEquals("the right item on the check in sheet", product, lineItems.get(0));
-
   }
 
 }
