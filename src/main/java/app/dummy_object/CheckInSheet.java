@@ -33,10 +33,7 @@ public class CheckInSheet {
    */
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    for (Product product  : products) {
-        sb.append(product.productName);
-        sb.append("\t");
-    }
+    products.forEach(p -> sb.append(p.productName).append("\t")); 
     return String.format("%s checked in the following product(s) %s", customer.getFullName(), sb.toString());
   }
   

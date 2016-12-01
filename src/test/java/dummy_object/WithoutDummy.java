@@ -1,7 +1,7 @@
 package dummy_object;
 
 import static data_fixtures.ValuePatterns.getUniqueNumber;
-import static data_fixtures.ValuePatterns.getUniqueNumberAsString;
+import static data_fixtures.ValuePatterns.getUniqueText;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
@@ -20,15 +20,15 @@ public class WithoutDummy {
   @Test
   public void expect_check_in_sheet_to_add_line_item() {
     final int QUANTITY = 1;
-    Product product = new Product(getUniqueNumberAsString(), getUniqueNumber());      
+    Product product = new Product(getUniqueText(), getUniqueNumber());      
     Province province = new Province("Zuid Holland", "ZH");      
     City city = new City("The Hague", province);
     Address address = new Address("Spui 138", city, "2525 TT");
-    Customer customer = new Customer(getUniqueNumberAsString(), getUniqueNumberAsString(), address);
+    Customer customer = new Customer(getUniqueText(), getUniqueText(), address);
     CheckInSheet checkInSheet = new CheckInSheet(customer);     
-    
+
     checkInSheet.add(product, QUANTITY);
-    
+
     List<Product> lineItems = checkInSheet.getLineItems();
     assertEquals("number of items on the check in sheet", QUANTITY, lineItems.size());
     assertEquals("the right item on the check in sheet", product, lineItems.get(0));

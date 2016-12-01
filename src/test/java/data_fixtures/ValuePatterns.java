@@ -1,6 +1,7 @@
 package data_fixtures;
 
 import java.util.Random;
+import java.util.UUID;
 
 public class ValuePatterns {
   
@@ -8,8 +9,8 @@ public class ValuePatterns {
     return new Random().nextInt(999_999_999);
   }
   
-  public static String getUniqueNumberAsString() {
-    return String.valueOf(getUniqueNumber());
+  public static String getUniqueText() {
+    return UUID.randomUUID().toString();
   }
 
 }
