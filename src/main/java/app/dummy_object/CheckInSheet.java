@@ -8,22 +8,20 @@ import java.util.List;
  */
 public class CheckInSheet {
 
-  private final List<Product> products;
-  private final ICustomer customer;
+  private final List<Asset> assets;
+  private final Customer customer;
   
-  public CheckInSheet(ICustomer customer) {
+  public CheckInSheet(Customer customer) {
     this.customer = customer;
-    products = new ArrayList<>();
+    assets = new ArrayList<>();
   }
 
-  public void add(Product product, int quantity) {
-    for (int i = 0; i < quantity; i++) {
-      products.add(product);      
-    }
+  public void add(Asset asset) {
+      assets.add(asset);      
   }
 
-  public List<Product> getLineItems() {
-    return products;
+  public List<Asset> getLineItems() {
+    return assets;
   }
   
   @Override
@@ -32,8 +30,8 @@ public class CheckInSheet {
    */
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    products.forEach(p -> sb.append(p.productName).append("\t")); 
-    return String.format("%s checked in the following product(s) %s", customer.getFullName(), sb.toString());
+    assets.forEach(p -> sb.append(p.getAssetDescription()).append("\t")); 
+    return String.format("%s checked in the following asset(s) %s", customer.getFullName(), sb.toString());
   }
   
 }

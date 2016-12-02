@@ -1,12 +1,12 @@
-package dummy_object;
+package dummy_object.manually;
 
 import app.dummy_object.Address;
-import app.dummy_object.ICustomer;
+import app.dummy_object.Customer;
 
 /**
  * This dummy object also helps you ensure it is not used in the SUT
  */
-public class DummyCustomer implements ICustomer {
+public class DummyPawner implements Customer {
 
   @Override
   public String getFullName() {

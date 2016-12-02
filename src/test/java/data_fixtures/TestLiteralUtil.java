@@ -3,7 +3,7 @@ package data_fixtures;
 import java.util.Random;
 import java.util.UUID;
 
-public class ValuePatterns {
+public class TestLiteralUtil {
   
   public static int getUniqueNumber() {
     return new Random().nextInt(999_999_999);
