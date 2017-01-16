@@ -25,8 +25,9 @@ public class HardCodedAddressServiceTest {
 
   @Test
   public void should_find_no_address_with_two_hardcoded_stubs() {
-    // instantiate the SUT with the hard-coded anonymous inner class stubs
-    AddressService service = new AddressService(saboteurStubRepository, saboteurStubFormatter);
+    AddressFormatter stubFormatter = new HardCodedStubAddressFormatter();
+    // instantiate the SUT with the hard-coded anonymous inner class stub
+    AddressService service = new AddressService(saboteurStubRepository, stubFormatter);
     // verify SUT
     assertEquals("Address not found", service.getAddress("TT5555", 112, "^"));
   }
@@ -42,20 +43,4 @@ public class HardCodedAddressServiceTest {
     
   };
   
-  //anonymous inner class that acts as a saboteur
-  AddressFormatter saboteurStubFormatter = new AddressFormatter() {
-
-    // dummy method to ensure correct use of stub
-    @Override
-    public String formatAddress(Address address) {
-      throw new RuntimeException("I should never be used by the SUT!");
-    }
-
-    @Override
-    public String formatAddressNotFound() {
-      return "Address not found";
-    } 
-   
-  };
-
 }

@@ -3,7 +3,6 @@ package app.stub;
 public interface AddressRepository {
   
   /**
-   * 
    * @param postCode
    * @param houseNumber
    * @param suffix

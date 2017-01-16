@@ -20,11 +20,13 @@ import app.stub.Province;
 
 public class AddressServiceTest {
   
+  //the two stubs we want to use
   @Mock AddressFormatter stubFormatter;
   @Mock AddressRepository stubRepository;
 
   @Before
   public void setUp() {
+    // use new stubs for each @Test
     MockitoAnnotations.initMocks(this);
   }
   
