@@ -1,4 +1,4 @@
-package stub.manually.with_mockito;
+package stub.with_mockito;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
@@ -57,7 +57,7 @@ public class AddressServiceTest {
     // configure the stubRepository as saboteur
     when(stubRepository.getAddress("TT5555", -12, "^"))
       .thenReturn(invalidAddress);
-    // configure the stubFormatter as saboteur
+    // configure the stubFormatter as responder
     when(stubFormatter.formatAddressNotFound())
       .thenReturn("Address not found");
     

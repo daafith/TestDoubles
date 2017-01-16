@@ -1,6 +1,5 @@
 package app.stub;
 
-
 public class City {
 
   public final String name;

@@ -22,7 +22,8 @@ public class JsonFormatterTest {
       + "\"postalCode\" : \"9999 TT\","
       + "\"city\" : {"
       + "\"cityName\" : \"Paradise City\","
-      + "\"provinceName\" : \"FooBar\",}}}";
+      + "\"provinceName\" : \"FooBar\","
+      + "\"provinceShortCode\" : \"FB\",}}}";
 
   private static final String ADDRESS_WITH_SUFFIX = "{\"address\" : "
       + "{\"street\" : \"Test Street\","
@@ -31,7 +32,8 @@ public class JsonFormatterTest {
       + "\"postalCode\" : \"9999 TT\","
       + "\"city\" : {"
       + "\"cityName\" : \"Paradise City\","
-      + "\"provinceName\" : \"FooBar\",}}}";
+      + "\"provinceName\" : \"FooBar\","
+      + "\"provinceShortCode\" : \"FB\",}}}";
   
   private AddressFormatter formatter;
   private City city;;

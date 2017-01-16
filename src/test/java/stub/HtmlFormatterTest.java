@@ -14,8 +14,8 @@ import app.stub.Province;
 public class HtmlFormatterTest {
 
   private static final String ADDRESS_NOT_FOUND = "<div class=\"noaddress\">Address not found</div>";
-  private static final String ADDRESS_WITHOUT_SUFFIX = "<div class=\"address\">Test Street 33 <br>9999 TT<br>Paradise City | FooBar</div>";
-  private static final String ADDRESS_WITH_SUFFIX = "<div class=\"address\">Test Street 33 a<br>9999 TT<br>Paradise City | FooBar</div>";
+  private static final String ADDRESS_WITHOUT_SUFFIX = "<div class=\"address\">Test Street 33 <br>9999 TT<br>Paradise City | FooBar (FB)</div>";
+  private static final String ADDRESS_WITH_SUFFIX = "<div class=\"address\">Test Street 33 a<br>9999 TT<br>Paradise City | FooBar (FB)</div>";
   private AddressFormatter formatter;
   private City city;;
   

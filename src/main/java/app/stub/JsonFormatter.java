@@ -13,6 +13,7 @@ public class JsonFormatter implements AddressFormatter {
           "\"city\" : {" +
             "\"cityName\" : \""+address.city.name+"\"," +
             "\"provinceName\" : \""+address.city.province.provinceName+"\"," +
+            "\"provinceShortCode\" : \""+address.city.province.provinceShortCode+"\"," +
           "}" +
         "}" +
         "}";

@@ -45,7 +45,7 @@ public class ConfigurableAddressServiceTest {
     // configure the stubRepository as saboteur
     stubRepository.setAddress(invalidAddress);
     
-    // configure the stubFormatter as saboteur
+    // configure the stubFormatter as responder
     stubFormatter.setFormattedAddressNotFound("Address not found");
     
     // instantiate the SUT with the configurable stubs 
