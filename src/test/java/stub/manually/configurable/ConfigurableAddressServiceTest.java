@@ -1,0 +1,44 @@
+package stub.manually.configurable;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import app.stub.Address;
+import app.stub.AddressService;
+import app.stub.City;
+import app.stub.Province;
+
+public class ConfigurableAddressServiceTest {
+
+  @Test
+  public void should_find_an_address_with_two_configurable_stubs() {
+    City city = new City("Paradise City", new Province("FooBar", "FB"));
+    Address validAddress = new Address("Test Street", 33, "a", city, "9999 TT");
+    
+    ConfigurableStubAddressRepository stubRepository = new ConfigurableStubAddressRepository();
+    stubRepository.setAddress(validAddress);
+    
+    ConfigurableStubAddressFormatter stubFormatter = new ConfigurableStubAddressFormatter();
+    stubFormatter.setFormattedAddress("address");
+    
+
+    AddressService service = new AddressService(stubRepository, stubFormatter);
+    assertEquals("address", service.getAddress("5555TT", 12, "c"));
+  }
+
+  @Test
+  public void should_find_no_address_with_two_configurable_stubs() {
+    Address invalidAddress = null;
+    
+    ConfigurableStubAddressRepository saboteurStubRepository = new ConfigurableStubAddressRepository();
+    saboteurStubRepository.setAddress(invalidAddress);
+    
+    ConfigurableStubAddressFormatter saboteurStubFormatter = new ConfigurableStubAddressFormatter();
+    saboteurStubFormatter.setFormattedAddressNotFound("Address not found");
+    
+    AddressService service = new AddressService(saboteurStubRepository, saboteurStubFormatter);
+    assertEquals("Address not found", service.getAddress("TT5555", 112, "^"));
+  }
+
+}
