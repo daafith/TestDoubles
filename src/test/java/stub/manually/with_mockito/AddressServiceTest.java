@@ -1,10 +1,15 @@
 package stub.manually.with_mockito;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import app.stub.Address;
 import app.stub.AddressFormatter;
@@ -15,21 +20,31 @@ import app.stub.Province;
 
 public class AddressServiceTest {
   
+  @Mock AddressFormatter stubFormatter;
+  @Mock AddressRepository stubRepository;
+
+  @Before
+  public void setUp() {
+    MockitoAnnotations.initMocks(this);
+  }
+  
   @Test
   public void should_find_an_address_with_two_mockito_stubs() {
     City city = new City("Paradise City", new Province("FooBar", "FB"));
     Address validAddress = new Address("Test Street", 33, "a", city, "9999 TT");
 
-    AddressFormatter formatter = mock(AddressFormatter.class);
-    AddressRepository repository = mock(AddressRepository.class);
-
-    when(repository.getAddress("5555TT", 12, "c"))
+    // configure the stubRepository as responder
+    when(stubRepository.getAddress("5555TT", 12, "c"))
       .thenReturn(validAddress);
-    when(formatter.formatAddress(validAddress))
+    // configure the stubFormatter as responder
+    when(stubFormatter.formatAddress(validAddress))
       .thenReturn("Address");
     
-    AddressService service = new AddressService(repository, formatter);
+    AddressService service = new AddressService(stubRepository, stubFormatter);
+    // verify SUT
     assertEquals("Address", service.getAddress("5555TT", 12, "c"));
+    // verify that formatAddressNotFound is never used
+    verify(stubFormatter, never()).formatAddressNotFound();
   }
   
 
@@ -37,16 +52,18 @@ public class AddressServiceTest {
   public void should_find_no_address_with_two_mockito_stubs() {
     Address invalidAddress = null;
     
-    AddressFormatter formatter = mock(AddressFormatter.class);
-    AddressRepository repository = mock(AddressRepository.class);
-
-    when(repository.getAddress("TT5555", -12, "^"))
+    // configure the stubRepository as saboteur
+    when(stubRepository.getAddress("TT5555", -12, "^"))
       .thenReturn(invalidAddress);
-    when(formatter.formatAddressNotFound())
+    // configure the stubFormatter as saboteur
+    when(stubFormatter.formatAddressNotFound())
       .thenReturn("Address not found");
     
-    AddressService service = new AddressService(repository, formatter);
+    AddressService service = new AddressService(stubRepository, stubFormatter);
+    // verify SUT
     assertEquals("Address not found", service.getAddress("TT5555", 112, "^"));
+    // verify that formatAddress is never used
+    verify(stubFormatter, never()).formatAddress(any());
   }
 
 }
