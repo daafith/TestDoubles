@@ -20,7 +20,7 @@ public class HardCodedAddressServiceTest {
     // instantiate the SUT with the hard-coded stubs 
     AddressService service = new AddressService(stubRepository, stubFormatter);
     // verify SUT
-    assertEquals("Address", service.getAddress("5555TT", 12, "c"));
+    assertEquals("Address", service.getAddress("5555 TT", 12, "c"));
   }
 
   @Test
