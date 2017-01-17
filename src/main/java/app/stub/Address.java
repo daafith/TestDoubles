@@ -14,15 +14,14 @@ public class Address {
     this.suffix = suffix;
     this.postalCode = postalCode;
     this.city = city;
-    if (isInvalidAddress()) throw new InvalidAddressException("Address cannot contain null values or a houseNumber lower than one");
+    if (isInvalidAddress()) throw new InvalidAddressException("Address cannot contain null values");
   }
 
   private boolean isInvalidAddress() {
     return this.street == null
         || this.suffix == null
         || this.postalCode == null
-        || this.city == null
-        || this.houseNumber < 1 ;
+        || this.city == null;
   }
   
   public static class InvalidAddressException extends RuntimeException {

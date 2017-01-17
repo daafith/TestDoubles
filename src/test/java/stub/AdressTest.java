@@ -11,10 +11,11 @@ import app.stub.Province;
 
 public class AdressTest {
 
+
   @Rule
   public ExpectedException expectedException = ExpectedException.none();
   
-  private static final int VALID_HOUSENUMBER = 1;
+  private static final int VALID_HOUSE_NUMBER = 1;
   private static final String VALID_POSTAL_CODE = "4444GG";
   private static final String VALID_SUFFIX = "a";
   private static final String VALID_STREET = "The Alley";
@@ -23,47 +24,41 @@ public class AdressTest {
   
   @Test
   public void can_create_with_suffix() {
-    new Address(VALID_STREET, VALID_HOUSENUMBER, VALID_SUFFIX, VALID_CITY, VALID_POSTAL_CODE);
+    new Address(VALID_STREET, VALID_HOUSE_NUMBER, VALID_SUFFIX, VALID_CITY, VALID_POSTAL_CODE);
   }
   
   @Test
   public void can_create_with_empty_suffix() {
-    new Address(VALID_STREET, VALID_HOUSENUMBER, "", VALID_CITY, VALID_POSTAL_CODE);
+    new Address(VALID_STREET, VALID_HOUSE_NUMBER, "", VALID_CITY, VALID_POSTAL_CODE);
   }
   
   @Test
   public void disallow_null_for_street() {
     assertThatInvalidAddressException();
-    new Address(null, VALID_HOUSENUMBER, VALID_SUFFIX, VALID_CITY, VALID_POSTAL_CODE);
+    new Address(null, VALID_HOUSE_NUMBER, VALID_SUFFIX, VALID_CITY, VALID_POSTAL_CODE);
   }
   
   @Test
   public void disallow_null_for_suffix() {
     assertThatInvalidAddressException();
-    new Address(VALID_STREET, 1, null, VALID_CITY, VALID_POSTAL_CODE);
+    new Address(VALID_STREET, VALID_HOUSE_NUMBER, null, VALID_CITY, VALID_POSTAL_CODE);
   }
   
   @Test
   public void disallow_null_for_city() {
     assertThatInvalidAddressException();
-    new Address(VALID_STREET, 1, VALID_SUFFIX, null, VALID_POSTAL_CODE);
+    new Address(VALID_STREET, VALID_HOUSE_NUMBER, VALID_SUFFIX, null, VALID_POSTAL_CODE);
   }
   
   @Test
   public void disallow_null_for_postalCode() {
     assertThatInvalidAddressException();
-    new Address(VALID_STREET, 1, VALID_SUFFIX, VALID_CITY, null);
+    new Address(VALID_STREET, VALID_HOUSE_NUMBER, VALID_SUFFIX, VALID_CITY, null);
   }
   
-  @Test
-  public void disallow_houseNumber_lower_than_one() {
-    assertThatInvalidAddressException();
-    new Address(VALID_STREET, 0, VALID_SUFFIX, VALID_CITY, VALID_POSTAL_CODE);
-  }
-
   private void assertThatInvalidAddressException() {
     expectedException.expect(InvalidAddressException.class);
-    expectedException.expectMessage("Address cannot contain null values or a houseNumber lower than one");
+    expectedException.expectMessage("Address cannot contain null values");
   }
 
 }
