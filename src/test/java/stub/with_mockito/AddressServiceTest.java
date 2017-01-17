@@ -33,10 +33,10 @@ public class AddressServiceTest {
   @Test
   public void should_find_an_address_with_two_mockito_stubs() {
     City city = new City("Paradise City", new Province("FooBar", "FB"));
-    Address validAddress = new Address("Test Street", 33, "a", city, "9999 TT");
+    Address validAddress = new Address("Test Street", 12, "c", city, "5555 TT");
 
     // configure the stubRepository as responder
-    when(stubRepository.getAddress("5555TT", 12, "c"))
+    when(stubRepository.getAddress("5555 TT", 12, "c"))
       .thenReturn(validAddress);
     // configure the stubFormatter as responder
     when(stubFormatter.formatAddress(validAddress))
@@ -44,7 +44,7 @@ public class AddressServiceTest {
     
     AddressService service = new AddressService(stubRepository, stubFormatter);
     // verify SUT
-    assertEquals("Address", service.getAddress("5555TT", 12, "c"));
+    assertEquals("Address", service.getAddress("5555 TT", 12, "c"));
     // verify that formatAddressNotFound is never used
     verify(stubFormatter, never()).formatAddressNotFound();
   }
