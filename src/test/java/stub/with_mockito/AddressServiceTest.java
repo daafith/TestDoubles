@@ -1,9 +1,6 @@
 package stub.with_mockito;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -45,8 +42,6 @@ public class AddressServiceTest {
     AddressService service = new AddressService(stubRepository, stubFormatter);
     // verify SUT
     assertEquals("Address", service.getAddress("5555 TT", 12, "c"));
-    // verify that formatAddressNotFound is never used
-    verify(stubFormatter, never()).formatAddressNotFound();
   }
   
 
@@ -64,8 +59,6 @@ public class AddressServiceTest {
     AddressService service = new AddressService(stubRepository, stubFormatter);
     // verify SUT
     assertEquals("Address not found", service.getAddress("TT5555", 112, "^"));
-    // verify that formatAddress is never used
-    verify(stubFormatter, never()).formatAddress(any());
   }
 
 }
