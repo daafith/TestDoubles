@@ -22,18 +22,18 @@ public class UserServiceTest {
 
   @Test
   public void expect_removal_to_be_logged() {
-    // PowerMock enables us to insert our logger into the static method getLogger
+    // PowerMock enables us to insert our spy logger into the static method getLogger
+    Logger spyLogger = mock(Logger.class);
     mockStatic(LoggerFactory.class);
-    Logger logger = mock(Logger.class);
     when(LoggerFactory.getLogger(any(Class.class)))
-      .thenReturn(logger);
+      .thenReturn(spyLogger);
 
     String userToRemove = "John Doe";
-    // exercise SUT
+    // exercise real SUT
     new UserService().remove(userToRemove);
 
     // check that the info message is OK
-    verify(logger).info(startsWith("Removed " + userToRemove + " from the database"));
+    verify(spyLogger).info(startsWith("Removed " + userToRemove + " from the database"));
   }
 
 }
