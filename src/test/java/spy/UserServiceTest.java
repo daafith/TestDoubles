@@ -22,7 +22,7 @@ public class UserServiceTest {
 
   @Test
   public void expect_removal_to_be_logged() {
-    // PowerMock enables us to make the static method getLogger a test double
+    // PowerMock enables us to insert our logger into the static method getLogger
     mockStatic(LoggerFactory.class);
     Logger logger = mock(Logger.class);
     when(LoggerFactory.getLogger(any(Class.class)))
