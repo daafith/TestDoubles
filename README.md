@@ -8,4 +8,12 @@ This is a placeholder object that is passed to the SUT as an argument (or an att
 
 ## Test Stub
 This is an object that replaces a real component on which the SUT depends so that the test can control the indirect inputs of the SUT. It allows the test to force the SUT down paths it might not otherwise exercise.
-Some examples are [nard-coded and configurable responders and saboteurs](https://www.testright.nl/2017/01/16/test-doubles-creating-a-stub/)
+Some examples are [hard-coded and configurable responders and saboteurs](https://www.testright.nl/2017/01/16/test-doubles-creating-a-stub/)
+
+## Test Stub
+This is an object that is a more capable version of a test stub. It can be used to verify the indirect outputs of the SUT by giving the test a way to inspect them after exercising the SUT.
+An example of [the test spy](https://www.testright.nl/2017/05/15/test-doubles-creating-a-test-spy/)
+
+## Test Mock
+This is an object is an object that replaces a real component on which the SUT depends so that the test can verify its indirect outputs.
+An example of [the test mock]
