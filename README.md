@@ -13,6 +13,6 @@ Some examples are [hard-coded and configurable responders and saboteurs](https:/
 ## Test Spy
 A Test Spy is a more capable version of a Test Stub. It can be used to verify the indirect outputs of the SUT by giving the test a way to inspect them after exercising the SUT. An example of [verifying indirect outputs](https://www.testright.nl/2017/05/15/test-doubles-creating-a-test-spy/).
 
-## Test Mock
+## Mock Object
 This is an object is an object that replaces a real component on which the SUT depends so that the test can verify its indirect outputs.
-An example of [the test mock]
+An example of [the mock](https://www.testright.nl/2017/11/22/test-doubles-creating-a-mock/)
