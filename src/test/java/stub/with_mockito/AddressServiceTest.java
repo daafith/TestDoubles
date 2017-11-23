@@ -58,7 +58,7 @@ public class AddressServiceTest {
     
     AddressService service = new AddressService(stubRepository, stubFormatter);
     // verify SUT
-    assertEquals("Address not found", service.getAddress("TT5555", 112, "^"));
+    assertEquals("Address not found", service.getAddress("TT5555", -12, "^"));
   }
 
 }

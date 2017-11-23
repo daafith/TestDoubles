@@ -51,7 +51,7 @@ public class ConfigurableAddressServiceTest {
     // instantiate the SUT with the configurable stubs 
     AddressService service = new AddressService(stubRepository, stubFormatter);
     // verify SUT
-    assertEquals("Address not found", service.getAddress("TT5555", 112, "^"));
+    assertEquals("Address not found", service.getAddress("TT5555", -12, "^"));
   }
 
 }

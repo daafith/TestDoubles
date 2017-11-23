@@ -29,7 +29,7 @@ public class HardCodedAddressServiceTest {
     // instantiate the SUT with the hard-coded anonymous inner class stub
     AddressService service = new AddressService(saboteurStubRepository, stubFormatter);
     // verify SUT
-    assertEquals("Address not found", service.getAddress("TT5555", 112, "^"));
+    assertEquals("Address not found", service.getAddress("TT5555", -12, "^"));
   }
 
   // anonymous inner class that acts as a saboteur
