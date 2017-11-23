@@ -1,4 +1,4 @@
-package stub.manually.configurable;
+package stub.handwritten.configurable;
 
 import static org.junit.Assert.assertEquals;
 

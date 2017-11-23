@@ -1,4 +1,4 @@
-package mock.manually;
+package mock.handwritten;
 
 import org.junit.Assert;
 import org.junit.Before;

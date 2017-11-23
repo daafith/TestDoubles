@@ -1,4 +1,4 @@
-package stub.manually.configurable;
+package stub.handwritten.configurable;
 
 import app.stub.Address;
 import app.stub.AddressRepository;

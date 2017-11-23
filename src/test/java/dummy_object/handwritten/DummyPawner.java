@@ -1,4 +1,4 @@
-package dummy_object.manually;
+package dummy_object.handwritten;
 
 import app.dummy_object.Address;
 import app.dummy_object.Customer;

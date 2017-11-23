@@ -1,4 +1,4 @@
-package stub.manually.hardcoded;
+package stub.handwritten.hardcoded;
 
 import app.stub.Address;
 import app.stub.AddressRepository;

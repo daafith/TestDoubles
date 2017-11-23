@@ -1,4 +1,4 @@
-package mock.manually;
+package mock.handwritten;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
