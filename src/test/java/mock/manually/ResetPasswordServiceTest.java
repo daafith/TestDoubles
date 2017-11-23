@@ -30,7 +30,7 @@ public class ResetPasswordServiceTest {
     // verify state of SUT
     Assert.assertTrue(passwordService.reset(VALID_EMAIL));
     // execute predefined verification
-    mockedEmailService.verfiy();
+    mockedEmailService.verfiyBehavior();
   }
 
   @Test
@@ -47,7 +47,7 @@ public class ResetPasswordServiceTest {
     // verify state of SUT
     Assert.assertFalse(passwordService.reset(VALID_EMAIL));
     // execute predefined verification
-    mockedEmailService.verfiy();
+    mockedEmailService.verfiyBehavior();
   }
 
 }

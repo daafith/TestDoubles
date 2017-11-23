@@ -36,7 +36,7 @@ public class MockedEmailService implements EmailService {
     actualNumberOfCallsToSend++;  
   }
   
-  void verfiy() {
+  void verfiyBehavior() {
     Assert.assertThat("Number of calls to send should be " + expectedNumberOfCallsToSend, //
         actualNumberOfCallsToSend, //
         CoreMatchers.equalTo(expectedNumberOfCallsToSend));
