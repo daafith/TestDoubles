@@ -1,4 +1,4 @@
-package mock;
+package mock.with_jmock;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
