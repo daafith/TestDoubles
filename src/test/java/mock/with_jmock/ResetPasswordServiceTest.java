@@ -14,13 +14,13 @@ public class ResetPasswordServiceTest {
   private static final String VALID_EMAIL = "tester@test.com";
   private static final String SUBJECT = "Reset Your Password";
   private static final String BODY = "You can reset your password using this link: http://bit.ly/IqT6zt";
-  private EmailService emailService;
+  private EmailService mockedEmailService;
   private Mockery context;
 
   @Before
   public void setUp() {
     context = new Mockery();
-    emailService = context.mock(EmailService.class);
+    mockedEmailService = context.mock(EmailService.class);
   }
 
   @Test
@@ -28,16 +28,16 @@ public class ResetPasswordServiceTest {
     context.checking(new Expectations() {
       {
         // stub response
-        allowing(emailService).isAvailable();
+        allowing(mockedEmailService).isAvailable();
         will(returnValue(Boolean.TRUE));
         
         // predefine verification
-        exactly(1).of(emailService).send(VALID_EMAIL, SUBJECT, BODY);
+        exactly(1).of(mockedEmailService).send(VALID_EMAIL, SUBJECT, BODY);
       }
     });
 
     // install SUT
-    ResetPasswordService passwordService = new ResetPasswordService(emailService);
+    ResetPasswordService passwordService = new ResetPasswordService(mockedEmailService);
 
     // verify state of SUT
     Assert.assertTrue(passwordService.reset(VALID_EMAIL));
@@ -50,16 +50,16 @@ public class ResetPasswordServiceTest {
     context.checking(new Expectations() {
       {
         // stub response
-        allowing(emailService).isAvailable();
+        allowing(mockedEmailService).isAvailable();
         will(returnValue(Boolean.FALSE));
         
         // predefine verification
-        exactly(0).of(emailService).send(VALID_EMAIL, SUBJECT, BODY);
+        exactly(0).of(mockedEmailService).send(VALID_EMAIL, SUBJECT, BODY);
       }
     });
 
     // install SUT
-    ResetPasswordService passwordService = new ResetPasswordService(emailService);
+    ResetPasswordService passwordService = new ResetPasswordService(mockedEmailService);
 
     // verify state of SUT
     Assert.assertFalse(passwordService.reset(VALID_EMAIL));
