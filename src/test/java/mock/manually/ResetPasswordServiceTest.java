@@ -20,8 +20,9 @@ public class ResetPasswordServiceTest {
   public void expect_successful_password_reset() {
     // stub response
     mockedEmailService.setAvailable(true);
-    // predefine verification
-    mockedEmailService.setExpectedNumberOfCalls(1);
+    // predefine verifications
+    mockedEmailService.setExpectedNumberOfCallsToSend(1);
+    mockedEmailService.setExpectedNumberOfCallsToIsAvailable(1);
   
     // install SUT
     ResetPasswordService passwordService = new ResetPasswordService(mockedEmailService);
@@ -36,9 +37,10 @@ public class ResetPasswordServiceTest {
   public void expect_unsuccessful_password_reset() {
     // stub response
     mockedEmailService.setAvailable(false);
-    // predefine verification
-    mockedEmailService.setExpectedNumberOfCalls(0);
-  
+    // predefine verifications
+    mockedEmailService.setExpectedNumberOfCallsToSend(0);
+    mockedEmailService.setExpectedNumberOfCallsToIsAvailable(2);
+
     // install SUT
     ResetPasswordService passwordService = new ResetPasswordService(mockedEmailService);
 
