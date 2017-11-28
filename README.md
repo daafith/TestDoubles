@@ -1,5 +1,5 @@
 # TestDoubles
-Test doubles are like stunt doubles, they take the place of the 'real' thing in test code.
+Test doubles are like stunt doubles, they take the place of the 'real' thing in test code. They are particularly useful in TDD but can also help in making existing tests quicker, more reliable and more controllable.
 ## Dummy Object
 This is a placeholder object that is passed to the SUT as an argument (or an attribute of an argument) but is never actually used.
 
